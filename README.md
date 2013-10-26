@@ -8,20 +8,20 @@ For example, if someone wants to enable `auto_match_enabled` for `python` and `c
 He has to create two files `Packages/User/Python.sublime-settings` and `Packages/User/C.sublime-settings`. 
 Then add, in each of the files, 
 
-	"auto_match_enabled": true
+		"auto_match_enabled": true
 
 
 This plugin makes this easier by the following setting in the Syntax Manager Preference file
 
 
-    "syntaxmgr_settings": [
-        {
-            "scopes": ["source.c", "source.python"],
-            "settings": {
-                "auto_match_enabled" : true
-            }
-        }
-    ]
+	    "syntaxmgr_settings": [
+	        {
+	            "scopes": ["source.c", "source.python"],
+	            "settings": {
+	                "auto_match_enabled" : true
+	            }
+	        }
+	    ]
 
 
 ###Usage
@@ -29,6 +29,8 @@ This plugin makes this easier by the following setting in the Syntax Manager Pre
 Open `Preference` -> `Syntax Manager Settings`. Below is a sample of what you can specify.
 You need to specify either `scopes` or `extensions` for each entry.
 
+```
+{
     "syntaxmgr_settings": [
         {
         	// for all source files
@@ -70,3 +72,5 @@ You need to specify either `scopes` or `extensions` for each entry.
             }
         }        
     ]
+}
+```
