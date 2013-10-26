@@ -9,9 +9,11 @@ class TrimListener(sublime_plugin.EventListener):
 
         for ss in syntaxmgr_settings:
             scopes = ss["scopes"] if "scopes" in ss else []
-            extensions = ss["extensions"] if "extensions" in ss else []            
+            extensions = ss["extensions"] if "extensions" in ss else []   
+            extensions = ["." + e for e in extensions]         
             fname = view.file_name()
-            if view.score_selector(0, " ".join(scopes)) or fname.lower().endswith(tuple(extensions)):
+            if (not scopes or view.score_selector(0, " ".join(scopes))) and \
+               (not extensions or fname.lower().endswith(tuple(extensions))):
                 for key, value in ss["settings"].items():
                     view.settings().set(key, value)
 
