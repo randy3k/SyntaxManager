@@ -11,7 +11,7 @@ Then add, in each of the files,
 	"auto_match_enabled": true
 
 
-This plugin makes this easier by the following setting in the User Preferece file
+This plugin makes this easier by the following setting in the Syntax Manager Preference file
 
 
     "syntaxmgr_settings": [
@@ -26,8 +26,8 @@ This plugin makes this easier by the following setting in the User Preferece fil
 
 ###Usage
 
-Open Preference -> Settings - User. Add the following settings.
-You either specific `scopes` or `extensions`.
+Open `Preference` -> `Syntax Manager Settings`. Below is a sample of what you can specify.
+You need to specify either `scopes` or `extensions` for each entry.
 
     "syntaxmgr_settings": [
         {
@@ -48,8 +48,8 @@ You either specific `scopes` or `extensions`.
             }
         },
         {
-        	// for all text file, but not latex file
-	        "scopes": ["text", "-text.tex"],
+        	// for comment, all text file, but not latex file
+	        "scopes": ["comment", "text", "-text.tex"],
             "settings": {            
 			    "spell_check": true
             }
@@ -66,6 +66,7 @@ You either specific `scopes` or `extensions`.
 	        "extensions": ["c", "cpp", "c++"],
             "settings": {            
 			    "syntax": "Packages/C++/C++.tmLanguage",
+			    "spell_check": false			    
             }
         }        
     ]

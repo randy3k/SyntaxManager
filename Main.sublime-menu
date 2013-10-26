@@ -1,0 +1,21 @@
+[
+    {
+        "caption": "Preferences",
+        "mnemonic": "n",
+        "id": "preferences",
+        "children":
+        [
+            {
+                "caption": "Syntax Manager Settings",
+                "mnemonic": "P",
+                "id": "syntax_settings",
+                "command": "open_file", "args":
+                {
+                    "file": "${packages}/User/SyntaxMgr.sublime-settings"
+                }
+            }
+        ]
+    }
+
+
+]
