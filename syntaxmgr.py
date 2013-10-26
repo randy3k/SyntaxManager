@@ -1,7 +1,6 @@
 import sublime, sublime_plugin
-import os
 
-class TrimListener(sublime_plugin.EventListener):
+class SyntaxMgrListener(sublime_plugin.EventListener):
     def on_load(self, view):
         if view.is_scratch() or view.settings().get('is_widget'): return
         syntaxmgr_settings = sublime.load_settings('SyntaxMgr.sublime-settings').get("syntaxmgr_settings")
