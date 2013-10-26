@@ -11,7 +11,7 @@ Then add, in each of the files,
 		"auto_match_enabled": true
 
 
-This plugin makes this easier by the following setting in the Syntax Manager Preference file
+This plugin makes it easier by the considering following setting
 
 
 	    "syntaxmgr_settings": [
