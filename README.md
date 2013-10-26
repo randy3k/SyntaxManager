@@ -23,10 +23,11 @@ This plugin makes this easier by the following setting in the Syntax Manager Pre
 	        }
 	    ]
 
+###Installation
+
+Package Control!
 
 ###Usage
-
-Installation: Package Control!
 
 Open `Preference` -> `Syntax Manager Settings`. Below is a sample of what you can specify.
 You need to specify either `scopes` or `extensions` for each entry.
