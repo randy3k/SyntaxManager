@@ -1,8 +1,11 @@
 Syntax Manager for Sublime Text 2/3
 ====================
-Manage settings for muliple syntax
+Manage settings for muliple syntaxes.
 
-I don't understand why ST makes it so difficult to toogle the same setting across several different syntaxes. For example, if someone wants to enable `auto_match_enabled` for `python` and `c`. He has to create two files under `Packages/User/Python.sublime-settings` and `Packages/User/C.sublime-settings`. Then add, in each of the files, 
+I don't understand why ST makes it so difficult to toogle the same setting across several different syntaxes. 
+For example, if someone wants to enable `auto_match_enabled` for `python` and `c`. 
+He has to create two files `Packages/User/Python.sublime-settings` and `Packages/User/C.sublime-settings`. 
+Then add, in each of the files, 
 
 	"auto_match_enabled": true
 
