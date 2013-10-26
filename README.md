@@ -11,7 +11,7 @@ Then add, in each of the files,
 	"auto_match_enabled": true
 
 
-This plugin makes this easier by the following setting in the user perferece file
+This plugin makes this easier by the following setting in the User Preferece file
 
 
     "syntaxmgr_settings": [
@@ -24,9 +24,10 @@ This plugin makes this easier by the following setting in the user perferece fil
     ]
 
 
-###Sample
+###Usage
 
-You can either specific `scopes` or `extensions`
+Open Preference -> Settings - User. Add the following settings.
+You either specific `scopes` or `extensions`.
 
     "syntaxmgr_settings": [
         {
