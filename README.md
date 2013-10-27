@@ -53,8 +53,8 @@ You need to specify either `scopes` or `extensions` for each entry.
             }
         },
         {
-        	// all text file, but not latex file
-	        "scopes": ["text", "-text.tex"],
+        	// all text file
+	        "scopes": ["text"],
             "settings": {            
 				"spell_check": true,
 				"color_scheme": "Packages/Color Scheme - Default/Twilight.tmTheme"
