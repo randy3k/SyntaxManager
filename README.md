@@ -49,14 +49,15 @@ You need to specify either `scopes` or `extensions` for each entry.
             "settings": {
 	            "auto_match_enabled" : false,
            	    "word_wrap": true,
-				"rulers": [120]
+           	    "rulers": [120]
             }
         },
         {
         	// for comment, all text file, but not latex file
 	        "scopes": ["comment", "text", "-text.tex"],
             "settings": {            
-			    "spell_check": true
+		"spell_check": true,
+		"color_scheme": "Packages/Color Scheme - Default/Twilight.tmTheme"
             }
         },        
         {
