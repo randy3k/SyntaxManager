@@ -36,24 +36,15 @@ You need to specify either `scopes` or `extensions` for each entry.
 {
     "syntaxmgr_settings": [
         {
-        	// for all source files
-            "scopes": ["source"],
+        	// for c and python files
+            "scopes": ["source.c", "source.python"],
             "settings": {
                 "trim_trailing_white_space_on_save_scope" : true,
                 "auto_match_enabled" : true
             }
         },
         {
-        	// for latex files
-            "scopes": ["text.tex"],
-            "settings": {
-	            "auto_match_enabled" : false,
-           	    "word_wrap": true,
-           	    "rulers": [120]
-            }
-        },
-        {
-        	// all text file
+        	// all text files
 	        "scopes": ["text"],
             "settings": {            
 				"spell_check": true,
@@ -61,8 +52,9 @@ You need to specify either `scopes` or `extensions` for each entry.
             }
         },        
         {
-        	// for all non-text file
-	        "scopes": ["-text"],
+        	// for all text files, excluding latex files
+	        "scopes": ["text"],
+            "scopes_excluded": ["text.tex"],
             "settings": {            
 			    "spell_check": false
             }
