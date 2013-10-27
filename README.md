@@ -60,11 +60,10 @@ You need to specify either `scopes` or `extensions` for each entry.
             }
         },
         {
-        	// use C++ syntax for all C files
-	        "extensions": ["c", "cpp", "c++"],
+        	// use latex syntex for these extensions
+	        "extensions": ["ltx", "latex","l"],
             "settings": {            
-			    "syntax": "Packages/C++/C++.tmLanguage",
-			    "spell_check": false			    
+			    "syntax": "Packages/LaTeX/LaTeX.tmLanguage"			    
             }
         }        
     ]
