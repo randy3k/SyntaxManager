@@ -29,7 +29,7 @@ Package Control!
 
 ###Usage
 
-Open `Preference` -> `Syntax Manager Settings`. Below is a sample of what you can specify.
+Open `Preference` -> `Syntax Manager`. Below is a sample of what you can specify.
 You need to specify either `scopes` or `extensions` for each entry.
 
 ```

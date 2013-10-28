@@ -6,7 +6,7 @@
         "children":
         [
             {
-                "caption": "Syntax Manager Settings",
+                "caption": "Syntax Manager",
                 "mnemonic": "P",
                 "id": "syntax_settings",
                 "command": "open_file", "args":
