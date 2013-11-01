@@ -32,7 +32,7 @@ class SyntaxMgrListener(sublime_plugin.EventListener):
         if view.is_scratch() or view.settings().get('is_widget'): return
         global IS_LOADED
         if not IS_LOADED.get(view.id()):
-            print("on_activated", view.id())
+            # print("on_activated", view.id())
             for S in self.load_settings(view):
                 if S.check(): S.apply()
             IS_LOADED.update({view.id(): True})
@@ -40,5 +40,10 @@ class SyntaxMgrListener(sublime_plugin.EventListener):
     def load_settings(self, view):
         syntaxmgr_settings = sublime.load_settings('SyntaxMgr.sublime-settings').get("syntaxmgr_settings")
         return [Sobj(view, S) for S in syntaxmgr_settings]
+
+    # remove IS_LOADED[vid] if file closes
+    def on_close(self, view):
+        vid = view.id()
+        if vid in IS_LOADED: IS_LOADED.pop(vid)
 
 
