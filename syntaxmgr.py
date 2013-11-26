@@ -1,8 +1,5 @@
 import sublime, sublime_plugin
 
-
-IS_LOADED = {}
-
 class Sobj():
     def __init__(self, view, S):
         self.scopes = S["scopes"] if "scopes" in S else []
@@ -27,14 +24,12 @@ class Sobj():
 
 
 class SyntaxMgrListener(sublime_plugin.EventListener):
+
     def on_activated(self, view):
         if view.is_scratch() or view.settings().get('is_widget'): return
-        if(not view.file_name()):
-                return
-        global IS_LOADED
-        if not IS_LOADED.get(view.id()):
-            for S in self.load_settings(view):
-                if S.check(): S.apply()
+
+        for S in self.load_settings(view):
+            if S.check(): S.apply()
 
     def load_settings(self, view):
         syntaxmgr_settings = sublime.load_settings('SyntaxMgr.sublime-settings').get("syntaxmgr_settings")
