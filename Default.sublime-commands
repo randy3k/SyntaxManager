@@ -1,0 +1,6 @@
+[
+    {
+        "caption": "Syntax Manager: Reload Settings",
+        "command": "syntax_mgr_reload"
+    }
+]

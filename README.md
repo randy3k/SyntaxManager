@@ -3,7 +3,7 @@
 It helps in applying settings to multiple syntaxes and applying syntax to given extensions.
 
 I don't understand why Sublime Text makes it so difficult to apply the same setting across several different syntaxes. 
-For example, if someone wants to enable `auto_match_enabled` for `python` and `c`, they have to create two files:
+For example, if someone want to enable `auto_match_enabled` for `python` and `c`, they have to create two files:
 - `Packages/User/Python.sublime-settings`
 - `Packages/User/C.sublime-settings`
 
@@ -12,7 +12,7 @@ Then, in each of the files, add:
 		"auto_match_enabled": true
 
 
-This plugin makes it easier by the considering following setting:
+This plugin makes it easier by the considering following setting in Syntax Manger:
 
 
 	    "syntaxmgr_settings": [
@@ -30,8 +30,8 @@ Package Control!
 
 ## Usage
 
-Open `Preference` -> `Syntax Manager`. Below is a sample of what you can specify.
-You need to specify either `scopes`, `scopes_excluded` or `extensions` for each item.
+Open `Preference` -> `Syntax Manager`. Below is a sample of what you can specify in the settings file.
+You need to specify at least one filter (`scopes`, `scopes_excluded` and `extensions`) for each item.
 
 
 ```
@@ -55,9 +55,8 @@ You need to specify either `scopes`, `scopes_excluded` or `extensions` for each 
         },
         {
         	// use latex syntex for these extensions
-        	// if you apply a syntax to certain extensions and apply some settings to such syntax
-        	// make sure you do apply the syntax first and then apply the settings.
-        	"extensions": ["ltx", "latex","l"],
+        	// make sure you do apply the syntax first and then apply the settings to the syntax.
+        	"extensions": ["ltx", "latex", "l"],
     		"settings": {            
     			"syntax": "Packages/LaTeX/LaTeX.tmLanguage"			    
     		}
@@ -73,3 +72,9 @@ You need to specify either `scopes`, `scopes_excluded` or `extensions` for each 
     ]
 }
 ```
+
+###Reload Settings
+
+Occasionally, syntax manager may fail to apply settings automatically,
+especially when creating new file. Reloading syntax manger will be helpful in
+this situation. To reload settings, launch comment palette (`C+shift+p`) and type "Syntax Manger: Reload Settings".
