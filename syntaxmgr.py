@@ -19,7 +19,7 @@ class Sobj():
         in_scopes_excluded = any([view.score_selector(0, s)>0 for s in self.scopes_excluded])
         extensions = ["." + e for e in self.extensions]
         in_extensions = not extensions or (fname and fname.lower().endswith(tuple(extensions)))
-        in_platforms = sublime.platform() in self.platforms
+        in_platforms = not self.platforms or sublime.platform() in self.platforms
         return in_scopes and in_extensions and not in_scopes_excluded and in_platforms
 
 
