@@ -25,6 +25,14 @@ class Sobj():
 
 class SyntaxMgrListener(sublime_plugin.EventListener):
     IS_LOADED = {}
+
+    def on_load(self, view):
+        if view.is_scratch() or view.settings().get('is_widget'): return
+        if view.size()==0 and not view.file_name(): return
+        if view.id() not in self.IS_LOADED:
+            print("SyntaxMgr: apply settings")
+            view.run_command("syntax_mgr_reload")
+
     def on_activated(self, view):
         if view.is_scratch() or view.settings().get('is_widget'): return
         if view.size()==0 and not view.file_name(): return
