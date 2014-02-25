@@ -6,6 +6,7 @@ class Sobj():
         self.scopes = S["scopes"] if "scopes" in S else []
         self.scopes_excluded = S["scopes_excluded"] if "scopes_excluded" in S else []
         self.extensions = S["extensions"] if "extensions" in S else []
+        self.platforms = S["platforms"] if "platforms" in S else []
         self.settings = S["settings"] if "settings" in S else []
 
     def apply(self, view):
@@ -18,7 +19,8 @@ class Sobj():
         in_scopes_excluded = any([view.score_selector(0, s)>0 for s in self.scopes_excluded])
         extensions = ["." + e for e in self.extensions]
         in_extensions = not extensions or (fname and fname.lower().endswith(tuple(extensions)))
-        return in_scopes and in_extensions and not in_scopes_excluded
+        in_platforms = sublime.platform() in self.platforms
+        return in_scopes and in_extensions and not in_scopes_excluded and in_platforms
 
 
 class SyntaxMgrListener(sublime_plugin.EventListener):

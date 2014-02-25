@@ -31,12 +31,19 @@ Package Control!
 ## Usage
 
 Open `Preference` -> `Syntax Manager`. Below is a sample of what you can specify in the settings file.
-You need to specify at least one filter (`scopes`, `scopes_excluded` and `extensions`) for each item.
+You need to specify at least one filter (`scopes`, `scopes_excluded`, `extensions`, `platforms`) for each item.
 
 
 ```
 {
     "syntaxmgr_settings": [
+        {
+            // platforms, can be osx, windows or linux
+            "platforms": ["linux", "windows"],
+            "settings": {
+                "font_size" : 14
+            }
+        },    
         {
         	// for c and python files
             "scopes": ["source.c", "source.python"],
