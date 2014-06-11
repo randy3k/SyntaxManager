@@ -1,6 +1,6 @@
 # Syntax Manager for Sublime Text 2/3
 
-It helps in applying settings to multiple syntaxes and applying syntax to given extensions.
+It helps in applying settings to given syntaxes and extensions.
 
 I don't understand why Sublime Text makes it so difficult to apply the same setting across several different syntaxes. 
 For example, if someone want to enable `auto_match_enabled` for `python` and `c`, they have to create two files:
@@ -31,7 +31,7 @@ Package Control!
 ## Usage
 
 Open `Preference` -> `Syntax Manager`. Below is a sample of what you can specify in the settings file.
-You need to specify at least one filter (`scopes`, `scopes_excluded`, `extensions`, `platforms`) for each item.
+You need to specify at least one of [`scopes`, `scopes_excluded`, `extensions`, `platforms`, `firstline`] for each item.
 
 
 ```
@@ -43,7 +43,15 @@ You need to specify at least one filter (`scopes`, `scopes_excluded`, `extension
             "settings": {
                 "font_size" : 14
             }
-        },    
+        },
+        {
+            // apply this setting when first line matches
+            // be careful that it is not a list but a string
+            "firstline": "#!/usr/bin/sh",
+            "settings": {
+                "syntax" : "Packages/ShellScript/Shell-Unix-Generic.tmLanguage"
+            }
+        },
         {
         	// for c and python files
             "scopes": ["source.c", "source.python"],
@@ -84,4 +92,4 @@ You need to specify at least one filter (`scopes`, `scopes_excluded`, `extension
 
 Occasionally, syntax manager may fail to apply settings automatically,
 especially when creating new file. Reloading syntax manger will be helpful in
-this situation. To reload settings, launch comment palette (`C+shift+p`) and type "Syntax Manger: Reload Settings".
+this situation. To reload settings, launch comment palette (`C+shift+p`) and type "Syntax Manager: Reload Settings".
