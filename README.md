@@ -2,27 +2,27 @@
 
 It helps in applying settings to given syntaxes and extensions.
 
-I don't understand why Sublime Text makes it so difficult to apply the same setting across several different syntaxes. 
-For example, if someone want to enable `auto_match_enabled` for `python` and `c`, they have to create two files:
+I don't understand why Sublime Text makes it so difficult to apply the same setting across several different syntaxes.
+For example, if someone want to enable `auto_match_enabled` for `python` and `c`, they has to create two files:
 - `Packages/User/Python.sublime-settings`
 - `Packages/User/C.sublime-settings`
 
-Then, in each of the files, add: 
+Then, in each of the files, add:
 
-		"auto_match_enabled": true
-
-
-This plugin makes it easier by the considering following setting in Syntax Manger:
+        "auto_match_enabled": true
 
 
-	    "syntaxmgr_settings": [
-	        {
-	            "scopes": ["source.c", "source.python"],
-	            "settings": {
-	                "auto_match_enabled" : true
-	            }
-	        }
-	    ]
+This plugin makes it easier by considering following setting in Syntax Manger:
+
+
+        "syntaxmgr_settings": [
+            {
+                "scopes": ["source.c", "source.python"],
+                "settings": {
+                    "auto_match_enabled" : true
+                }
+            }
+        ]
 
 ## Installation
 
@@ -53,7 +53,7 @@ You need to specify at least one of [`scopes`, `scopes_excluded`, `extensions`, 
             }
         },
         {
-        	// for c and python files
+            // for c and python files
             "scopes": ["source.c", "source.python"],
             "settings": {
                 "trim_trailing_white_space_on_save_scope" : true,
@@ -61,29 +61,29 @@ You need to specify at least one of [`scopes`, `scopes_excluded`, `extensions`, 
             }
         },
         {
-        	// all text files
-	        "scopes": ["text"],
-    		"settings": {            
-    			"spell_check": true,
-    			"color_scheme": "Packages/Color Scheme - Default/Twilight.tmTheme"
-    		}
+            // all text files
+            "scopes": ["text"],
+            "settings": {
+                "spell_check": true,
+                "color_scheme": "Packages/Color Scheme - Default/Twilight.tmTheme"
+            }
         },
         {
-        	// use latex syntex for these extensions
-        	// make sure you do apply the syntax first and then apply the settings to the syntax.
-        	"extensions": ["ltx", "latex", "l"],
-    		"settings": {            
-    			"syntax": "Packages/LaTeX/LaTeX.tmLanguage"			    
-    		}
-        },          
+            // use latex syntex for these extensions
+            // make sure the syntax is applied first and then the settings
+            "extensions": ["ltx", "latex", "l"],
+            "settings": {
+                "syntax": "Packages/LaTeX/LaTeX.tmLanguage"
+            }
+        },
         {
-        	// for all text files, excluding latex files
-	        "scopes": ["text"],
-    		"scopes_excluded": ["text.tex"],
-    		"settings": {            
-    			"spell_check": false
-    		}
-        }      
+            // for all text files, excluding latex files
+            "scopes": ["text"],
+            "scopes_excluded": ["text.tex"],
+            "settings": {
+                "spell_check": false
+            }
+        }
     ]
 }
 ```
