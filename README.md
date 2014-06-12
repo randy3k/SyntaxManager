@@ -47,7 +47,7 @@ You need to specify at least one of [`scopes`, `scopes_excluded`, `extensions`, 
         {
             // apply this setting when first line matches
             // be careful that it is not a list but a string
-            "firstline": "#!/usr/bin/sh",
+            "firstline": "#!/.*/sh",
             "settings": {
                 "syntax" : "Packages/ShellScript/Shell-Unix-Generic.tmLanguage"
             }
