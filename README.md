@@ -31,8 +31,7 @@ Package Control!
 ## Usage
 
 Open `Preference` -> `Syntax Manager`. Below is a sample of what you can specify in the settings file.
-You need to specify at least one of [`scopes`, `scopes_excluded`, `extensions`, `platforms`, `firstline`] for each item.
-
+For each item, you need to provide at least one of the {`scopes`, `scopes_excluded`, `extensions`, `platforms`, `firstline`}.
 
 ```
 {
