@@ -46,7 +46,7 @@ For each item, you need to provide at least one of the {`scopes`, `scopes_exclud
         {
             // apply this setting when first line matches
             // be careful that it is not a list but a string
-            "firstline": "#!/.*/sh",
+            "firstline": "#!/.*?/sh",
             "settings": {
                 "syntax" : "Packages/ShellScript/Shell-Unix-Generic.tmLanguage"
             }
