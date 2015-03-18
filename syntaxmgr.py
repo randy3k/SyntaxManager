@@ -5,30 +5,38 @@ import re
 
 class Sobj():
     def __init__(self, S):
-        self.scopes = S["scopes"] if "scopes" in S else []
-        self.scopes_excluded = S["scopes_excluded"] if "scopes_excluded" in S else []
-        self.extensions = S["extensions"] if "extensions" in S else []
-        self.platforms = S["platforms"] if "platforms" in S else []
-        self.firstlinepat = S["firstline"] if "firstline" in S else []
-        self.settings = S["settings"] if "settings" in S else []
+        self.S = S
 
     def apply(self, view):
-        for key, value in self.settings.items():
+        settings = self.S["settings"] if "settings" in self.S else []
+        for key, value in settings.items():
             view.settings().set(key, value)
 
-    def check(self, view):
+    def check_scopes(self, view):
+        scopes = self.S["scopes"] if "scopes" in self.S else []
+        scopes_excluded = self.S["scopes_excluded"] if "scopes_excluded" in self.S else []
+
+        return (not scopes or any([view.score_selector(0, s) > 0 for s in scopes])) \
+            and all([view.score_selector(0, s) == 0 for s in scopes_excluded])
+
+    def check_extensions(self, view):
+        extensions = self.S["extensions"] if "extensions" in self.S else []
         fname = view.file_name()
-        in_scopes = not self.scopes or any([view.score_selector(0, s) > 0 for s in self.scopes])
-        in_scopes_excluded = any([view.score_selector(0, s) > 0 for s in self.scopes_excluded])
-        extensions = ["." + e for e in self.extensions]
-        in_extensions = not extensions or \
-            (fname and fname.lower().endswith(tuple(extensions)))
-        in_platforms = not self.platforms or \
-            sublime.platform() in [p.lower() for p in self.platforms]
-        firstline_matched = True if not self.firstlinepat \
-            or re.match(self.firstlinepat, view.substr(view.line(view.text_point(0, 0)))) else False
-        return in_scopes and in_extensions and \
-            not in_scopes_excluded and in_platforms and firstline_matched
+        extensions = ["." + e for e in extensions]
+        return not extensions or (fname and fname.lower().endswith(tuple(extensions)))
+
+    def check_platform(self, view):
+        platforms = self.S["platforms"] if "platforms" in self.S else []
+        return not platforms or sublime.platform() in [p.lower() for p in platforms]
+
+    def check_firstline(self, view):
+        firstlinepat = self.S["firstline"] if "firstline" in self.S else []
+        return not firstlinepat \
+            or re.match(firstlinepat, view.substr(view.line(view.text_point(0, 0))))
+
+    def check(self, view):
+        return self.check_scopes(view) and self.check_extensions(view) and \
+            self.check_platform(view) and self.check_firstline(view)
 
 
 class SyntaxMgrListener(sublime_plugin.EventListener):
@@ -54,7 +62,7 @@ class SyntaxMgrListener(sublime_plugin.EventListener):
 class SyntaxMgrReload(sublime_plugin.TextCommand):
     def run(self, edit):
         view = self.view
-        settings = sublime.load_settings('SyntaxMgr.sublime-settings').get("syntaxmgr_settings")
+        settings = sublime.load_settings('SyntaxMgr.sublime-settings').get("syntaxmgr_settings", [])
         for s in settings:
             S = Sobj(s)
             if S.check(view):
