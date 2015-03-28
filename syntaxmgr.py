@@ -41,29 +41,29 @@ class Sobj():
 
 class SyntaxMgrListener(sublime_plugin.EventListener):
 
-    def on_load(self, view):
+    def load_syntax_mgr(self, view):
         if view.is_scratch() or view.settings().get('is_widget'):
             return
-        if view.size() == 0 and not view.file_name():
-            return
-        if not view.settings().has("syntax_mgr_loaded"):
-            view.run_command("syntax_mgr_reload")
 
-    def on_activated(self, view):
-        if view.is_scratch() or view.settings().get('is_widget'):
-            return
         if view.size() == 0 and not view.file_name():
             return
+
         if not view.settings().has("syntax_mgr_loaded"):
             view.settings().set("syntax_mgr_loaded", True)
             view.run_command("syntax_mgr_reload")
+
+    def on_load(self, view):
+        self.load_syntax_mgr(view)
+
+    def on_activated(self, view):
+        self.load_syntax_mgr(view)
 
 
 class SyntaxMgrReload(sublime_plugin.TextCommand):
     def run(self, edit):
         view = self.view
-        settings = sublime.load_settings('SyntaxMgr.sublime-settings').get("syntaxmgr_settings", [])
-        for s in settings:
+        settings = sublime.load_settings('SyntaxMgr.sublime-settings')
+        for s in settings.get("syntaxmgr_settings", []):
             S = Sobj(s)
             if S.check(view):
                 S.apply(view)
