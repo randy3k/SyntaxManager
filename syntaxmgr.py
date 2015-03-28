@@ -42,7 +42,7 @@ class Sobj():
 class SyntaxMgrListener(sublime_plugin.EventListener):
 
     def load_syntax_mgr(self, view):
-        if view.is_scratch() or view.settings().get('is_widget'):
+        if view.settings().get('is_widget'):
             return
 
         if view.size() == 0 and not view.file_name():
@@ -51,6 +51,11 @@ class SyntaxMgrListener(sublime_plugin.EventListener):
         if not view.settings().has("syntax_mgr_loaded"):
             view.settings().set("syntax_mgr_loaded", True)
             view.run_command("syntax_mgr_reload")
+
+    def on_new(self, view):
+        # need a small delay here to give he view a chance to prepare
+        # itself
+        sublime.set_timeout(lambda: self.load_syntax_mgr(view), 0)
 
     def on_load(self, view):
         self.load_syntax_mgr(view)
