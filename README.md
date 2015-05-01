@@ -54,10 +54,19 @@ For each item, you need to provide at least one of the filters
             // be careful that it is not a list but a string
             "firstline": "#!/.*?/sh",
             "settings": {
+                // the syntax can be identified by running
+                //
+                //     view.settings().get("syntax")
+                //
+                // at sublime console (ctrl + ` )
+                //
                 "syntax" : "Packages/ShellScript/Shell-Unix-Generic.tmLanguage"
             }
         },
         {
+            // the scope of the document can be obtained by pressing
+            // cmd+alt+p (mac) or ctrl+alt+shift+p (linux / windows)
+
             // for c and python files
             "scopes": ["source.c", "source.python"],
             "settings": {
