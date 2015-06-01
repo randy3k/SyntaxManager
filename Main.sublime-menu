@@ -1,13 +1,12 @@
 [
     {
         "caption": "Preferences",
-        "mnemonic": "n",
         "id": "preferences",
         "children":
         [
             {
                 "caption": "Syntax Manager",
-                "mnemonic": "P",
+                "mnemonic": "s",
                 "id": "syntax_settings",
                 "command": "open_file", "args":
                 {
@@ -16,6 +15,4 @@
             }
         ]
     }
-
-
 ]
