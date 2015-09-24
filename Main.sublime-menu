@@ -6,7 +6,7 @@
         [
             {
                 "caption": "Syntax Manager",
-                "mnemonic": "s",
+                "mnemonic": "S",
                 "id": "syntax_settings",
                 "command": "open_file", "args":
                 {
