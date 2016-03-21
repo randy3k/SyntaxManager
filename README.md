@@ -37,9 +37,9 @@ For each item, you need to provide at least one of the filters
 - `scopes_excluded` 
 - `extensions`
 - `platforms`
-- `firstline`
+- `first_line_match`
 
-```
+```js
 {
     "syntaxmgr_settings": [
         {
@@ -52,7 +52,7 @@ For each item, you need to provide at least one of the filters
         {
             // apply this setting when first line matches
             // be careful that it is not a list but a string
-            "firstline": "#!/.*?/sh",
+            "first_line_match": "#!/.*?/sh",
             "settings": {
                 // the syntax can be identified by running
                 //

@@ -36,7 +36,7 @@ class SyntaxMgrCriteria():
         return sublime.platform() in [p.lower() for p in platforms]
 
     def match_firstline(self, view):
-        firstlinepat = self.S.get("firstline", "")
+        firstlinepat = self.S.get("first_line_match", self.S.get("firstline", ""))
         if not firstlinepat:
             return True
 
