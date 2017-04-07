@@ -37,6 +37,7 @@ For each item, you need to provide at least one of the filters
 - `scopes_excluded` 
 - `extensions`
 - `platforms`
+- `hostnames`
 - `first_line_match`
 
 ```js
