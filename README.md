@@ -50,6 +50,20 @@ For each item, you need to provide at least one of the filters
             }
         },
         {
+            // match a specific computer based on hostname
+            // the hostname can be found by running
+            //
+            //     import platform
+            //     platform.node()
+            //
+            // at sublime console (ctrl + ` )
+            //
+            "hostnames": ["some-hostname"],
+            "settings": {
+                "font_size" : 12
+            }
+        },
+        {
             // apply this setting when first line matches
             // be careful that it is not a list but a string
             "first_line_match": "#!/.*?/sh",
