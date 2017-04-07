@@ -37,6 +37,7 @@ For each item, you need to provide at least one of the filters
 - `scopes_excluded` 
 - `extensions`
 - `platforms`
+- `hostnames`
 - `first_line_match`
 
 ```js
@@ -47,6 +48,20 @@ For each item, you need to provide at least one of the filters
             "platforms": ["linux", "windows"],
             "settings": {
                 "font_size" : 14
+            }
+        },
+        {
+            // match a specific computer based on hostname
+            // the hostname can be found by running
+            //
+            //     import platform
+            //     platform.node()
+            //
+            // at sublime console (ctrl + ` )
+            //
+            "hostnames": ["some-hostname"],
+            "settings": {
+                "font_size" : 12
             }
         },
         {

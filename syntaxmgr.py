@@ -1,6 +1,7 @@
 import sublime
 import sublime_plugin
 import re
+import platform
 
 
 class SyntaxMgrCriteria():
@@ -43,9 +44,16 @@ class SyntaxMgrCriteria():
         first_line = view.substr(view.line(view.text_point(0, 0)))
         return re.match(firstlinepat, first_line)
 
+    def match_hostname(self, view):
+        hostnames = self.S.get("hostnames", [])
+        if not hostnames:
+            return True
+
+        return platform.node() in hostnames
+
     def match(self, view):
         return self.match_scopes(view) and self.match_extensions(view) and \
-            self.match_platform(view) and self.match_firstline(view)
+            self.match_platform(view) and self.match_firstline(view) and self.match_hostname(view)
 
 
 class SyntaxMgrListener(sublime_plugin.EventListener):
