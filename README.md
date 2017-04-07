@@ -117,7 +117,7 @@ For each item, you need to provide at least one of the filters
 }
 ```
 
-###Reload Settings
+### Reload Settings
 
 Occasionally, syntax manager may fail to apply settings automatically,
 especially when creating new file. Reloading syntax manger will be helpful in
