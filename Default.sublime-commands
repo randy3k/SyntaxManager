@@ -2,5 +2,15 @@
     {
         "caption": "Syntax Manager: Reload Settings",
         "command": "syntax_mgr_reload"
+    },
+    {
+        "caption": "Syntax Manager: Edit Settings",
+        "id": "syntax_settings",
+        "command": "edit_settings", "args":
+        {
+            "base_file": "${packages}/SyntaxManager/SyntaxMgr.sublime-settings",
+            "user_file": "${packages}/User/SyntaxMgr.sublime-settings",
+            "default": "{\n    \"syntaxmgr_settings\":[\n        {\n\n        }\n    ]\n}"
+        }
     }
 ]

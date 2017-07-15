@@ -6,11 +6,12 @@
         [
             {
                 "caption": "Syntax Manager",
-                "mnemonic": "S",
                 "id": "syntax_settings",
-                "command": "open_file", "args":
+                "command": "edit_settings", "args":
                 {
-                    "file": "${packages}/User/SyntaxMgr.sublime-settings"
+                    "base_file": "${packages}/SyntaxManager/SyntaxMgr.sublime-settings",
+                    "user_file": "${packages}/User/SyntaxMgr.sublime-settings",
+                    "default": "{\n    \"syntaxmgr_settings\":[\n        {\n\n        }\n    ]\n}"
                 }
             }
         ]
