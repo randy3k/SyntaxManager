@@ -65,9 +65,16 @@ For each item, you need to provide at least one of the filters
             }
         },
         {
+            // multiple filters can be applied to the same item
+            "platforms": ["linux", "windows"],
+            "hostnames": ["some-hostname"],
+            "settings": {
+                "font_size" : 12
+            }
+        }
+        {
             // apply this setting when first line matches
-            // be careful that it is not a list but a string
-            "first_line_match": "#!/.*?/sh",
+            "first_line_match": ["#!/.*?/sh"],
             "settings": {
                 // the syntax can be identified by running
                 //

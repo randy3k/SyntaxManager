@@ -15,13 +15,17 @@ class SyntaxMgrCriteria():
 
     def match_scopes(self, view):
         scopes = self.S.get("scopes", [])
+        scopes = [scopes] if isinstance(scopes, str) else scopes
         scopes_excluded = self.S.get("scopes_excluded", [])
+        scopes_excluded = [scopes_excluded] if isinstance(scopes_excluded, str) else scopes_excluded
 
         return (not scopes or any([view.score_selector(0, s) > 0 for s in scopes])) \
             and all([view.score_selector(0, s) == 0 for s in scopes_excluded])
 
     def match_extensions(self, view):
         extensions = self.S.get("extensions", [])
+        extensions = [extensions] if isinstance(extensions, str) else extensions
+
         if not extensions:
             return True
 
@@ -31,6 +35,8 @@ class SyntaxMgrCriteria():
 
     def match_platform(self, view):
         platforms = self.S.get("platforms", [])
+        platforms = [platforms] if isinstance(platforms, str) else platforms
+
         if not platforms:
             return True
 
@@ -38,14 +44,22 @@ class SyntaxMgrCriteria():
 
     def match_firstline(self, view):
         firstlinepat = self.S.get("first_line_match", self.S.get("firstline", ""))
+        firstlinepat = [firstlinepat] if isinstance(firstlinepat, str) else firstlinepat
+
         if not firstlinepat:
             return True
 
-        first_line = view.substr(view.line(view.text_point(0, 0)))
-        return re.match(firstlinepat, first_line)
+        for pat in firstlinepat:
+            first_line = view.substr(view.line(view.text_point(0, 0)))
+            if re.match(pat, first_line):
+                return True
+
+        return False
 
     def match_hostname(self, view):
         hostnames = self.S.get("hostnames", [])
+        hostnames = [hostnames] if isinstance(hostnames, str) else hostnames
+
         if not hostnames:
             return True
 
