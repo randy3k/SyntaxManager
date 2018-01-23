@@ -71,7 +71,7 @@ For each item, you need to provide at least one of the filters
             "settings": {
                 "font_size" : 12
             }
-        }
+        },
         {
             // apply this setting when first line matches
             "first_line_match": ["#!/.*?/sh"],
